@@ -49,6 +49,15 @@ Set DepartmentName = 'Maths'
 Where Location = 'Building B';
 Delete From Departments
 Where DepartmentName = 'Physics';
-SELECT FirstName , LastName
-FROM Professors
-WHERE DepartmentID IN (SELECT DepartmentID FROM Departments WHERE DepartmentName = 'Computer Science');
+SELECT FirstName , Email , DOB
+FROM Students
+WHERE DepartmentID IN (SELECT DepartmentID FROM Departments WHERE DepartmentName = 'Maths');
+Alter table Courses add ProfessorID int;
+SELECT FirstName, LastName
+FROM Students
+WHERE DepartmentID IN (
+    SELECT DepartmentID
+    FROM Professors
+    WHERE FirstName = 'Alice'
+);
+
